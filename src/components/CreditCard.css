@@ -1,221 +1,193 @@
+#cardContainer {
+  position: relative;
+  min-width: 350px;
+  aspect-ratio: 43/27;
+  color: rgb(255, 255, 255);
+  perspective: 1000px;
+  transform-style: preserve-3d;
 
-.container {  
-    display: grid;
-    background-color: rgb(66, 66, 66);
-    grid-template-columns: 0.5fr 1.4fr 1.1fr 1.1fr;
-    grid-template-rows: 1fr 1fr 0.7fr 0.5fr 0.6fr 0.7fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    width: 70vw;
-    aspect-ratio: 43/27;
-    border-radius: 3rem;
-    padding: 1rem;
-    border: 2px solid; 
-    border-color: lightgray black black lightgray; 
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.3s ease-in-out;
+  .creditCard {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: rgb(95, 96, 97);
+      border-radius: 20px;
+      border-top: 2px solid white;
+      border-left: 1px solid white;
+      border-right: 1px solid rgb(58, 57, 57);
+      border-bottom: 2px solid rgb(63, 62, 62);
+      backface-visibility: hidden;
 
   }
 
-  p{
-    color: white;
+  .front {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .bankName {
+          display: flex;
+          align-items: flex-end;
+          padding: 10px;
+
+          img {
+              width: 30px;
+          }
+
+          p {
+              font-size: 0.9rem;
+              line-height: 0.8rem;
+              margin-left: 5px;
+          }
+      }
+
+      .microChip {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          img:first-child {
+              width: 25px;
+              margin-left: 5px;
+          }
+
+          img:nth-child(2) {
+              width: 40px;
+          }
+      }
+
+      .cardNumber {
+          margin-left: 10%;
+      }
+
+      .content {
+          text-align: end;
+          width: 60%;
+          font-size: 8px;
+          display: flex;
+          align-items: end;
+          line-height: 1rem;
+          gap: 10px;
+
+
+          .expiration {
+              display: flex;
+              align-items: center;
+              justify-content: end;
+              line-height: 0.5rem;
+              gap: 5px;
+
+              .date {
+                  font-size: 12px;
+                  margin-right: 1rem;
+              }
+          }
+
+          .name {
+              font-size: 0.8rem;
+          }
+
+      }
+
+      #insert {
+          width: 20px;
+          margin-left: 5px;
+      }
+
+      #goldChicken {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          width: 60px;
+      }
+
+
+      .visa {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          width: 60px;
+      }
   }
 
+  .back {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.4rem;
+      gap: 10px;
+      transform: rotateY(180deg);
 
-
-  .triangle { 
-    grid-area: 4 / 1 / 7 / 2;
-    margin-left: 1rem;
-
-    img{
-        width: 5rem;
+      .createdAt {
+          margin: 0.2rem 0.5rem 0 0;
+          text-align: end;
       }
 
- }
-    
-  .expire { 
-    grid-area: 5 / 2 / 6 / 3;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 2rem;
-    p{
-        font-size: 2rem;
-    }
- }
-  
-  .date { 
-    grid-area: 5 / 3 / 6 / 4;
-    p{
-        font-size: 4rem;
-    }
- }
-  
-  .visa { 
-    grid-area: 6 / 4 / 7 / 5;
-    img{
-        width: 90%;
-      }
- }
-  
-  .nom { 
-    grid-area: 6 / 2 / 7 / 4;
-    p{
-        font-size: 3.5rem;
-    }
+      .cardTrack {
+          width: 100%;
+          height: 40px;
+          background-color: rgb(145, 145, 145);
 
- }
-   
-  .logo__name { 
-    grid-area: 1 / 1 / 2 / 3;
-    display: flex;
-    align-items: center;
-    margin-left: 3.5rem;
-    gap: 1rem;
-    p{
-        font-size: 3.5rem;
-    }
-    img{
-        max-width: 40%;
-        max-height: 50%;
       }
- }
-   
-  .logo__poule { 
-    grid-area: 1 / 4 / 2 / 5;
-    img{
-        width: 90%;
+
+      .signatureContainer {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          width: 100%;
+
+          p {
+              font-size: 0.5rem;
+          }
+
+          .signature {
+              background: url("../assets/barreCode.png");
+              background-size: 100% 100%;
+              width: 75%;
+              height: 40px;
+              display: flex;
+              justify-content: end;
+              align-items: center;
+              position: relative;
+
+              p {
+                  color: black;
+                  font-family: monospace;
+                  font-style: italic;
+                  margin-right: 10px;
+              }
+
+              &::before {
+                  content: "SIGNATURE DU TITULAIRE OBLIGATOIRE";
+                  position: absolute;
+                  top: -10px;
+                  left: 50%;
+                  transform: translateX(-50%);
+              }
+          }
+
       }
- }
-  
-  .sansContact__puce { 
-    grid-area: 2 / 1 / 3 / 3;
-    display: flex;
-    margin-left: 1rem;
-    gap: 2rem;
 
-    img{
-        width: 8rem;
-        height: 7rem;
+      .policy {
+          width: 65%;
+          margin: 0 auto;
       }
- }
-  
-  .num__carte { 
-    grid-area: 3 / 2 / 4 / 4;
 
-    p{
-        font-size: 5rem;
-    }
- }
-  
-  .info__carte { 
-    grid-area: 4 / 2 / 5 / 4;
-    display: flex;
-    justify-content: center;
-    margin-left: 12rem;
-    p{
-        font-size: 2rem;
-    }
- }
+      #cb {
+          width: 50px;
+      }
 
- .container:hover {
-    transform: scale(1.05); 
+      #holoChicken {
+          width: 50px;
+          position: absolute;
+          bottom: 35px;
+          left: 10px;
+      }
+
+      .visa {
+          width: 50px;
+          position: absolute;
+          bottom: 30px;
+          right: 50px;
+      }
   }
-
-  .verso {  display: grid;
-    grid-template-columns: 0.5fr 1.6fr 0.9fr;
-    grid-template-rows: 0.5fr 1fr 0.5fr 1.3fr 1.2fr 1.2fr;
-    gap: 0px 0px;
-    background-color: rgb(66, 66, 66);
-    grid-auto-flow: row;
-    width: 70vw;
-    aspect-ratio: 43/27;
-    border-radius: 3rem;
-    border: 2px solid; 
-    border-color: lightgray black black lightgray; 
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
-    padding: 1rem;
-    grid-template-areas:
-      ". . date__verso"
-      "bande bande bande"
-      ". signature ."
-      "bande__multicouleur bande__multicouleur cb"
-      "poulet texte ."
-      "poulet . visaverso";
-  }
-  
-  .bande { 
-    grid-area: bande;
-    background-color: rgb(138, 135, 135);
- }
-  
-  .signature { 
-    grid-area: signature;
-    display: flex;
-    justify-content: center;
-    p{
-        font-size: 1.5rem;
-    }
-
 }
-  
-  .bande__multicouleur { 
-    grid-area: bande__multicouleur;
-    background-image: url("../assets/barreCode.png");
-    background-size: cover;
-    display: flex;
-    justify-content: flex-end;
-    margin-left: 1rem;
-    
-    p{
-        font-size: 4rem;
-        color: black;
-        padding: 2rem;
-    }
- }
-  
-  .cb { 
-    grid-area: cb;
-    display: flex;
-    justify-content: center;
-    img{
-        width: 60%;
-      }
- }
-  
-  .poulet {
-     grid-area: poulet;
-     margin: 1rem;
-     img{
-        width: 90%;
-      }
-     }
-  
-  .texte { 
-    grid-area: texte;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    p{
-        font-size: 1.3rem;
-    }
- }
-  
-  .visaverso { 
-    grid-area: visaverso;
-    img{
-        width: 50%;
-      }
- }
-  
-  .date__verso { 
-    grid-area: date__verso;
-    display: flex;
-    justify-content: center;
-    p{
-        font-size: 1.3rem;
-    }
- }
-  
-
-
-  
